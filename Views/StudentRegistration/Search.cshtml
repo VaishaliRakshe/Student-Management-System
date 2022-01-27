@@ -1,0 +1,142 @@
+﻿
+@model IEnumerable<StudentManagementSystem.Models.StudentRegistration>
+
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Search</h2>
+
+<p>
+    @Html.ActionLink("Add New Student", "Create")
+</p>
+
+@using (@Html.BeginForm("Search", "StudentRegistration", FormMethod.Post))
+{
+    <div class="form-group">
+        <div class="col-md-2">
+            <h4>@Html.Label("Search student :")</h4>
+        </div>
+        <div class="col-md-3">
+            <input type="text" id="Search" name="Search" placeholder="Search" class="form-control" />
+        </div>
+        @*<div class="col-md-7">
+                <input type="submit" id="SearchBtn" name="SearchBtn" value="Search" class="btn btn-primary" />
+            </div>*@
+    </div>
+}
+
+
+
+<table class="table table-bordered table-hover">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Reg_No)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Stu_Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Stu_Name)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.FatherName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MotherName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PresentAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Session)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Department)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Batch_No)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Stu_imagePath)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr class="Search">
+            <td>
+                @Html.DisplayFor(modelItem => item.Reg_No)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Stu_Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Stu_Name)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.FatherName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MotherName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PresentAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Session)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Department)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Batch_No)
+            </td>
+            <td>
+                @{
+                    var image = "~/Images/" + item.Stu_imagePath;
+                }
+                <img src="@Url.Content(image)" width="90" height="110" />
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.id })
+                @Html.ActionLink("Details", "Details", new { id = item.id })
+                @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                @Html.ActionLink("$ Fee", "Fee", new { id = item.id })
+            </td>
+        </tr>
+    }
+</table>
+
+@Html.ActionLink("Add New Student", "Create", "StudentRegistration")
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script>
+    $(document).ready(function () {
+        function Contains(text_one, text_two) {
+            if (text_one.indexOf(text_two) != -1)
+                return true;
+        };
+
+        $("#Search").keyup(function() {
+            var searchText = $("#Search").val().toLowerCase();
+            $(".Search").each(function() {
+                if (!Contains($(this).text().toLowerCase(), searchText)) {
+                    $(this).hide();
+                } else {
+                    $(this).show();
+                }
+            });
+        });
+    });
+</script>

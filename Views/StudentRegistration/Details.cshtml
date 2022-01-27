@@ -1,0 +1,144 @@
+﻿@model StudentManagementSystem.Models.StudentRegistration
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/jquery.fancybox.css" rel="stylesheet" />
+<h2>Details</h2>
+
+<div class="panel panel-primary" style="margin-top:25px">
+    <div class="panel-heading"><h4>Student Information</h4></div>
+    <div class="panel-body">
+        @Html.ValidationSummary(true)
+        
+        <div class="row">
+            <div class="col-md-8">
+                <div class="row; form-horizontal">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Reg_No, new { @class = "control-label col-md-3" })
+                        <div class="col-md-3">
+                            @Html.DisplayFor(model => model.Reg_No)
+                            @Html.ValidationMessageFor(model => model.Reg_No)
+                        </div>
+                        @Html.LabelFor(model => model.Stu_Id, new { @class = "control-label col-md-3" })
+                        <div class="col-md-3">
+                            @Html.DisplayFor(model => model.Stu_Id)
+                            @Html.ValidationMessageFor(model => model.Stu_Id)
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row; form-horizontal">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Stu_Name, new { @class = "control-label col-md-3" })
+                        <div class="col-md-3">
+                            @Html.DisplayFor(model => model.Stu_Name)
+                            @Html.ValidationMessageFor(model => model.Stu_Name)
+                        </div>
+                        @Html.LabelFor(model => model.PhoneNumber, new { @class = "control-label col-md-3" })
+                        <div class="col-md-3">
+                            @Html.DisplayFor(model => model.PhoneNumber)
+                            @Html.ValidationMessageFor(model => model.PhoneNumber)
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row; form-horizontal">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.FatherName, new { @class = "control-label col-md-3" })
+                        <div class="col-md-3">
+                            @Html.DisplayFor(model => model.FatherName)
+                            @Html.ValidationMessageFor(model => model.FatherName)
+                        </div>
+                        @Html.LabelFor(model => model.MotherName, new { @class = "control-label col-md-3" })
+                        <div class="col-md-3">
+                            @Html.DisplayFor(model => model.MotherName)
+                            @Html.ValidationMessageFor(model => model.MotherName)
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row; form-horizontal">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.EmailAddress, new { @class = "control-label col-md-3" })
+                        <div class="col-md-3">
+                            @Html.DisplayFor(model => model.EmailAddress)
+                            @Html.ValidationMessageFor(model => model.EmailAddress)
+                        </div>
+                        @Html.LabelFor(model => model.Batch_No, new { @class = "control-label col-md-3" })
+                        <div class="col-md-3">
+                            @Html.DisplayFor(model => model.Batch_No)
+                            @Html.ValidationMessageFor(model => model.Batch_No)
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row; form-horizontal">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Department, new { @class = "control-label col-md-3" })
+                        <div class="col-md-3">
+                            @Html.DisplayFor(model => model.Department)
+                            @Html.ValidationMessageFor(model => model.Department)
+                        </div>
+                        @Html.LabelFor(model => model.Session, new { @class = "control-label col-md-3" })
+                        <div class="col-md-3">
+                            @Html.DisplayFor(model => model.Session)
+                            @Html.ValidationMessageFor(model => model.Session)
+                        </div>
+                    </div>
+                </div>
+                
+
+                <div class="row; form-horizontal">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.PresentAddress, new { @class = "control-label col-md-3" })
+                        <div class="col-md-3">
+                            @Html.DisplayFor(model => model.PresentAddress)
+                            @Html.ValidationMessageFor(model => model.PresentAddress)
+                        </div>
+                        @Html.LabelFor(model => model.PermanentAddress, new { @class = "control-label col-md-3" })
+                        <div class="col-md-3">
+                            @Html.DisplayFor(model => model.PermanentAddress)
+                            @Html.ValidationMessageFor(model => model.PermanentAddress)
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-4">
+                @Html.Label("image", new { @class = "control-label col-md-2" })
+                @{
+                    var image="~/Images/" + Model.Stu_imagePath;
+                }
+                <img src="@Url.Content(image)" height="150" width="130" />
+            </div>
+        </div>
+
+        <div class="form-horizontal">
+            <div>
+                @Html.HiddenFor(x => x.id)
+            </div>
+            <div class="form-group">
+                <div style="margin-left: 100px; margin-top: 15px;">
+                    <input type="button" id="btnReport" value="Report Run" class="btn btn-primary" />
+                    <input type="button" id="btnStudentReport" value="Student Report" class="btn btn-primary" />
+                    <a id="pdf" class="hidden" runat="server">click me</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="col-md-2">
+    @Html.ActionLink("Back to List", "Search")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <script src="~/Scripts/jquery.fancybox.js"></script>
+    <script src="~/Scripts/StudentSearching.js"></script>
+}
+

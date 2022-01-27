@@ -1,0 +1,152 @@
+﻿@model StudentManagementSystem.Models.StudentRegistration
+
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Create", "StudentRegistration", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+     @Html.ValidationSummary(true)
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <div class="panel panel-primary" style="margin-top:25px">
+        <div class="panel-heading"><h4>Student Registration</h4></div>
+        <div class="panel-body">
+            <div class="form-horizontal">
+                <div class="row">
+                    <div class="col-md-8">
+
+                        <div class="row, form-group">
+                            @Html.LabelFor(model => model.Reg_No, new { @class = "control-label col-md-3" })
+                            <div class="col-md-3">
+                                @Html.EditorFor(model => model.Reg_No)
+                                @Html.ValidationMessageFor(model => model.Reg_No)
+                            </div>
+                            @Html.LabelFor(model => model.Stu_Id, new { @class = "control-label col-md-3" })
+                            <div class="col-md-3">
+                                @Html.EditorFor(model => model.Stu_Id)
+                                @Html.ValidationMessageFor(model => model.Stu_Id)
+                            </div>
+                        </div>
+                        <div class="row, form-group">
+                            @Html.LabelFor(model => model.Stu_Name, new { @class = "control-label col-md-3" })
+                            <div class="col-md-3">
+                                @Html.EditorFor(model => model.Stu_Name)
+                                @Html.ValidationMessageFor(model => model.Stu_Name)
+                            </div>
+                            @Html.LabelFor(model => model.PhoneNumber, new { @class = "control-label col-md-3" })
+                            <div class="col-md-3">
+                                @Html.EditorFor(model => model.PhoneNumber)
+                                @Html.ValidationMessageFor(model => model.PhoneNumber)
+                            </div>
+                        </div>
+                        <div class="row, form-group">
+                            @Html.LabelFor(model => model.FatherName, new { @class = "control-label col-md-3" })
+                            <div class="col-md-3">
+                                @Html.EditorFor(model => model.FatherName)
+                                @Html.ValidationMessageFor(model => model.FatherName)
+                            </div>
+                            @Html.LabelFor(model => model.MotherName, new { @class = "control-label col-md-3" })
+                            <div class="col-md-3">
+                                @Html.EditorFor(model => model.MotherName)
+                                @Html.ValidationMessageFor(model => model.MotherName)
+                            </div>
+                        </div>
+                        <div class="row, form-group">
+                            @Html.LabelFor(model => model.EmailAddress, new { @class = "control-label col-md-3" })
+                            <div class="col-md-3">
+                                @Html.EditorFor(model => model.EmailAddress)
+                                @Html.ValidationMessageFor(model => model.EmailAddress)
+                            </div>
+                            @Html.LabelFor(model => model.Batch_No, new { @class = "control-label col-md-3" })
+                            <div class="col-md-3">
+                                @Html.DropDownListFor(model => model.Batch_No, Model.BatchSelectList, "--Select Item--", new { style = "width: 178px; height: 26px" })
+                                @*@Html.EditorFor(model => model.Batch_No)*@
+                                @Html.ValidationMessageFor(model => model.Batch_No)
+                            </div>
+                        </div>
+                        <div class="row, form-group">
+                            @Html.LabelFor(model => model.Department, new { @class = "control-label col-md-3" })
+                            <div class="col-md-3">
+                                @Html.DropDownListFor(model => model.Department, Model.DepartmentList, "--Select Item--", new { style = "width: 178px; height: 26px" })
+                                @*@Html.EditorFor(model => model.Department)*@
+                                @Html.ValidationMessageFor(model => model.Department)
+                            </div>
+                            @Html.LabelFor(model => model.Session, new { @class = "control-label col-md-3" })
+                            <div class="col-md-3">
+                                @Html.DropDownListFor(model => model.Session, Model.SessionSelectList, "--Select Item--", new { style = "width: 178px; height: 26px" })
+                                @*@Html.EditorFor(model => model.Session)*@
+                                @Html.ValidationMessageFor(model => model.Session)
+                            </div>
+                        </div>
+                        <div class="row, form-group">
+                            @Html.LabelFor(model => model.PresentAddress, new { @class = "control-label col-md-3" })
+                            <div class="col-md-3">
+                                @Html.EditorFor(model => model.PresentAddress)
+                                @Html.ValidationMessageFor(model => model.PresentAddress)
+                            </div>
+                            @Html.LabelFor(model => model.PermanentAddress, new { @class = "control-label col-md-3" })
+                            <div class="col-md-3">
+                                @Html.EditorFor(model => model.PermanentAddress)
+                                @Html.ValidationMessageFor(model => model.PermanentAddress)
+                            </div>
+                        </div>
+                        @Html.HiddenFor(model=>model.Stu_imagePath)
+                    </div>
+                    <div class="col-md-4">
+                        @*@Html.Label("image ", new { @class = "control-label col-md-1" })*@
+                        @{
+                            var image ="~/Images/" + Model.Stu_imagePath;
+                        }
+                        <img src="@Url.Content(image)" id="viewimage" class="img-responsive" width="150" height="200" style="margin-left: 120px; border: 1px solid black; background-color: black" />
+                        <input type="file" id="file" name="file" onchange="uploadimag(this)" style="margin-left: 120px; margin-top: 15px" />
+                        @*@Html.EditorFor(model => model.Stu_imagePath)*@
+                        @Html.ValidationMessageFor(model => model.Stu_imagePath)
+                    </div>
+                    <div>
+                        @Html.HiddenFor(x => x.id)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Save" class="btn btn-primary" style="width: 75px" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Search","StudentRegistration")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+
+<script type="text/javascript">
+    $(Document).ready(function () {
+
+    });
+
+    function uploadimag(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $("#viewimage").attr("src", e.target.result);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
+
+

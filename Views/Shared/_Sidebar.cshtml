@@ -1,0 +1,102 @@
+﻿@*@using WebHelpers.Mvc5*@
+<aside class="main-sidebar">
+    <section class="sidebar">
+        <ul class="sidebar-menu" data-widget="tree">
+            <li class="header">Manu Bar</li>
+            <li @*class="@Url.IsLinkActive("Index", "Home")"*@>
+                <a href="@Url.Action("Index", "Home")"><i class="fa fa-home"></i> <span>Home</span></a>
+            </li>
+
+
+            @*<li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-search" aria-hidden="true"></i> <span>Client Info</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li>@Html.ActionLink("Data Transection", "NewData", "DataTransections")</li>
+                        <li>@Html.ActionLink("Data Report", "Report", "DataTransections")</li>
+
+                    </ul>
+                </li>*@
+
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-search" aria-hidden="true"></i> <span>Client Info</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li>@Html.ActionLink("Client Entry", "ClientInfoForm", "ClientInfos")</li>
+                    <li>@Html.ActionLink("Active User", "ActiveClientInfo", "ClientInfos")</li>
+                    <li>@Html.ActionLink("DeActive User", "DeActiveClientInfo", "ClientInfos")</li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-send" aria-hidden="true"></i> <span>SMS Send</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li>@Html.ActionLink("SMS Send", "SmsSendForm", "SmsSends")</li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-shopping-cart" aria-hidden="true"></i> <span>Production</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li>@Html.ActionLink("Milk Production", "ProductionForm", "Productions")</li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-shopping-basket" aria-hidden="true"></i> <span>Purchase</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li>@Html.ActionLink("Milk Purchase", "MilkPurchaseForm", "MilkPurchases")</li>
+                    <li>@Html.ActionLink("Purchase List", "MilkPurchaseList", "MilkPurchases")</li>
+
+                </ul>
+            </li>
+
+
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-shopping-basket" aria-hidden="true"></i> <span>Sales Module</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li>@Html.ActionLink("Sales Form", "SalesForm", "Sales")</li>
+
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-list" aria-hidden="true"></i> <span>Setup Module</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li>@Html.ActionLink("Area Entry", "AreaSetupForm", "Areas")</li>
+                    <li>@Html.ActionLink("Cow Entry", "CowEntryForm", "CowSetups")</li>
+                </ul>
+            </li>
+        </ul>
+        @* END Menu *@
+    </section>
+</aside>

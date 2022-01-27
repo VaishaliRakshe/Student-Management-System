@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <title>@ViewBag.Title - My ASP.NET Application</title>
+        @Styles.Render("~/Content/css")
+        <link href="~/Content/toastr.css" rel="stylesheet" />
+        @*<link href="~/Content/bootstrap_lumen.css" rel="stylesheet" />
+        <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+        <link href="~/Content/bootstrap.css" rel="stylesheet" />*@
+        
+        @Scripts.Render("~/bundles/modernizr")
+
+        <style>
+            .fancybox-inner {height: 90vh !important;}
+        </style>
+
+    </head>
+    <body @*style="background-image: url(Images/morningsunpic1.jpg); background-size: cover; background-attachment: fixed; "*@>
+       
+        <div class="navbar navbar-inverse navbar-fixed-top" style="background-color: navy; margin-top: 25px">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("Application name", "Index", "Home", null, new { @class = "navbar-brand" })
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav" style="color: #FFFFFF">
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Student Registration", "Create", "StudentRegistration")</li>
+                        <li>@Html.ActionLink("Searching", "Search", "StudentRegistration")</li>
+                        <li>@Html.ActionLink("Addmin", "Index", "Setting")</li>
+                        <li>@Html.ActionLink("SMS Send", "Index", "SmsSend")</li>
+                    </ul>
+                    @Html.Partial("_LoginPartial")
+                </div>
+            </div>
+        </div>
+
+        
+        @*<div class="sidebar">
+            <a href="/home/index"><i class="fa fa-fw fa-home"></i> Home</a>
+            <a href="#services"><i class="fa fa-fw fa-wrench"></i> Services</a>
+            <a href="#clients"><i class="fa fa-fw fa-user"></i> Clients</a>
+            <a href="#contact"><i class="fa fa-fw fa-envelope"></i> Contact</a>
+        </div>*@
+        
+        
+       
+       
+       
+      
+
+        <div class="container body-content" style="margin-top: 50px">
+            @RenderBody()
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            </footer>
+        </div>
+
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        <script src="~/Scripts/toastr.js"></script>
+        @RenderSection("scripts", required: false)
+    
+        <style>
+            
+             body {
+                 font-family: "Lato", sans-serif;
+             }
+
+           
+
+            .sidebar {
+                height: 100%;
+                width: 160px;
+                position: fixed;
+                z-index: 1;
+                top: 0;
+                left: 0;
+                background-color: #111;
+                overflow-x: hidden;
+                padding-top: 16px;
+                margin-top: 45px
+            }
+
+            .sidebar a {
+                padding: 6px 8px 6px 16px;
+                text-decoration: none;
+                font-size: 20px;
+                color: #818181;
+                display: block;
+            }
+
+            .sidebar a:hover {
+                color: #f1f1f1;
+            }
+
+            .main {
+                margin-left: 160px; /* Same as the width of the sidenav */
+                padding: 0px 10px;
+            }
+        </style>
+
+    </body>
+</html>
+
